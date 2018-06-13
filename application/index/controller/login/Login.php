@@ -1,6 +1,7 @@
 <?php
-namespace app\index\controller;
+namespace app\index\controller\login;
 
+use app\index\controller\Xcx;
 use think\Db;
 use think\Session;
 
