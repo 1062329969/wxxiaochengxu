@@ -13,7 +13,8 @@ return [
     '__pattern__' => [
         'name' => '\w+',
     ],
-    '[i]'     => [
-        '/a'   => ['@index/a']
+    '[member]'     => [
+        '/login'   => ['@index/login/Login/index'],
+        '/dologin'   => ['@index/login/Login/memberlogin']
     ],
 ];
