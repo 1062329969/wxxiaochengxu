@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-class Index extends Xcx
+class Login extends Xcx
 {
     public function index(){
 
