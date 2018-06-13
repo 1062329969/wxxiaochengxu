@@ -15,11 +15,11 @@ return [
     // 服务器地址
     'hostname'        => '127.0.0.1',
     // 数据库名
-    'database'        => 'xcx_xnxna_com',
+    'database'        => 'xnxna',
     // 用户名
-    'username'        => 'xcx_xnxna_com',
+    'username'        => 'root',
     // 密码
-    'password'        => 'xcx_xnxna_com',
+    'password'        => 'root',
     // 端口
     'hostport'        => '3306',
     // 连接dsn
