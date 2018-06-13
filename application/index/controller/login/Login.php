@@ -1,5 +1,5 @@
 <?php
-namespace app\index\controller;
+namespace app\index\controller\login;
 
 use think\Db;
 use think\Session;
