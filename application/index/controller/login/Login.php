@@ -2,8 +2,10 @@
 namespace app\index\controller\login;
 
 use app\index\controller\Xcx;
+use think\Config;
 use think\Db;
 use think\Session;
+use ApiOauth\ApiOauth;
 
 class Login extends Xcx
 {
@@ -25,5 +27,12 @@ class Login extends Xcx
         }else{
             $this->error('登录失败');
         }
+    }
+
+    public function getopenid(){
+        $code = input('post.code/s');
+        $info= ['appid'=>Config::get('app.appid'),'appsecret'=>Config::get('app.appsecret')];
+        $ApiOauth=new ApiOauth();
+        return $ApiOauth->getopenid($info,$code);
     }
 }
