@@ -17,5 +17,6 @@ return [
         '/login'   => ['@index/login/Login/index'],
         '/dologin'   => ['@index/login/Login/memberlogin']
     ],
+    'adduser'=>'@index/login/Login/adduser',
     'getopenid'=>'@index/login/Login/getopenid'
 ];
