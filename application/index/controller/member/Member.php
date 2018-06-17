@@ -18,6 +18,7 @@ class Member extends Xcx
     }
 
     public function getuser(){
+        echo session_id();
         var_dump(Session::get());die;
     }
 }
