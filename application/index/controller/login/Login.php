@@ -41,8 +41,7 @@ class Login extends Xcx
         $userinfo = input('post.userinfo/a');
         $info= ['appid'=>Config::get('app.appid'),'appsecret'=>Config::get('app.appsecret')];
         $ApiOauth=new ApiOauth();
-        $openidarr = $ApiOauth->get_web_access_token($info,$code);
-        var_dump($openidarr);die;
+        $openidarr = $ApiOauth->getopenid($info,$code);
         $openid = $openidarr['info']['openid'];
         $user = Db::name('user')->where(['u_openid'=>$openid])->find();
 
