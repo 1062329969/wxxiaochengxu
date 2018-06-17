@@ -37,7 +37,11 @@ class Login extends Xcx
         $user = Db::name('user')->where(['u_openid'=>$openid])->find();
         Session::set('openid',$user['u_openid']);
         Session::set('uid',$user['u_id']);
-        return json(['openid'=>$openid,'sessionid'=>getsessionid()]);
+        return json([
+            'openid'=>$openid,
+            'sessionid'=>getsessionid(),
+            'loveid'=>$user['u_loveid']
+        ]);
     }
 
     public function adduser(){
