@@ -15,8 +15,10 @@ return [
     ],
     '[member]'     => [
         '/login'   => ['@index/login/Login/index'],
-        '/dologin'   => ['@index/login/Login/memberlogin']
+        '/dologin'   => ['@index/login/Login/memberlogin'],
+        '/mylove' => ['@index/member/Member/getuser']
     ],
     'adduser'=>'@index/login/Login/adduser',
-    'getopenid'=>'@index/login/Login/getopenid'
+    'getopenid'=>'@index/login/Login/getopenid',
+
 ];
