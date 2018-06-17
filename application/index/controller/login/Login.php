@@ -33,7 +33,7 @@ class Login extends Xcx
         $userinfo = input('post.userinfo/a');
         $info= ['appid'=>Config::get('app.appid'),'appsecret'=>Config::get('app.appsecret')];
         $ApiOauth=new ApiOauth();
-        return $ApiOauth->get_web_access_token($info,$code);
+        var_dump($ApiOauth->get_web_access_token($info,$code));die;
     }
 
     public function adduser(){
