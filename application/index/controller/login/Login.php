@@ -50,7 +50,7 @@ class Login extends Xcx
             'u_logintime'=>time(),
             'u_wxpic'=>$userinfo['avatarUrl'],
             'u_wxsex'=>$userinfo['gender'],
-            'u_openid'=>$userinfo['openid']
+            'u_openid'=>$openid
         ];
         if($user){
             $res = Db::name('user')->where(['u_id'=>$user['u_id']])->update($datas);
@@ -60,7 +60,7 @@ class Login extends Xcx
             $datas['u_name'] = $userinfo['nickName'];
             $datas['u_addtime'] = time();
             $res = Db::name('user')->update($datas);
-            Session::set('openid',$userinfo['u_openid']);
+            Session::set('openid',$openid);
             Session::set('uid',Db::getLastInsID());
         }
         if($res) {
