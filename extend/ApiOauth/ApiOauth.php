@@ -255,6 +255,7 @@ class ApiOauth
         $curl = 'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code';
         $curl = sprintf($curl,$appid,$appsecret,$js_code);
         $result = request($curl);
+        echo 111;
         var_dump($result);die;
         return array('status'=>1,'info'=>json_decode($result,true));
     }
