@@ -33,7 +33,11 @@ class Login extends Xcx
         $info= ['appid'=>Config::get('app.appid'),'appsecret'=>Config::get('app.appsecret')];
         $ApiOauth=new ApiOauth();
         $openidarr = $ApiOauth->getopenid($info,$code);
-        return $openidarr['info']['openid'];
+        $openid = $openidarr['info']['openid'];
+        $user = Db::name('user')->where(['u_openid'=>$openid])->find();
+        Session::set('openid',$user['u_openid']);
+        Session::set('uid',$user['u_id']);
+        return json(['openid'=>$openid,'sessionid'=>getsessionid()]);
     }
 
     public function adduser(){
@@ -54,19 +58,15 @@ class Login extends Xcx
         ];
         if($user){
             $res = Db::name('user')->where(['u_id'=>$user['u_id']])->update($datas);
-            Session::set('openid',$user['u_openid']);
-            Session::set('uid',$user['u_id']);
         }else{
             $datas['u_name'] = $userinfo['nickName'];
             $datas['u_addtime'] = time();
             $res = Db::name('user')->insert($datas);
-            Session::set('openid',$openid);
-            Session::set('uid',Db::getLastInsID());
         }
         if($res) {
-            $this->success('登录成功');
+            return json(['code'=>1,'msg'=>'登录成功']);
         }else{
-            $this->error('登录失败');
+            return json(['code'=>1,'msg'=>'登录失败']);
         }
     }
 }
