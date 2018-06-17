@@ -59,7 +59,7 @@ class Login extends Xcx
         }else{
             $datas['u_name'] = $userinfo['nickName'];
             $datas['u_addtime'] = time();
-            $res = Db::name('user')->update($datas);
+            $res = Db::name('user')->insert($datas);
             Session::set('openid',$openid);
             Session::set('uid',Db::getLastInsID());
         }
