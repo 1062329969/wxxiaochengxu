@@ -30,10 +30,10 @@ class Login extends Xcx
 
     public function getopenid(){
         $code = input('post.code/s');
-        $userinfo = input('post.userinfo/a');
         $info= ['appid'=>Config::get('app.appid'),'appsecret'=>Config::get('app.appsecret')];
         $ApiOauth=new ApiOauth();
-        var_dump($ApiOauth->getopenid($info,$code));die;
+        $openidarr = $ApiOauth->getopenid($info,$code);
+        return $openidarr['info']['openid'];
     }
 
     public function adduser(){
