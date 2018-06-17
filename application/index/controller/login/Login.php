@@ -60,7 +60,7 @@ class Login extends Xcx
             $datas['u_addtime'] = time();
             $res = Db::name('user')->update($datas);
             Session::set('openid',$userinfo['u_openid']);
-            Session::set('uid',Db::getLastInsID())
+            Session::set('uid',Db::getLastInsID());
         }
         if($res) {
             $this->success('登录成功');
