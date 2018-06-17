@@ -1,5 +1,5 @@
 <?php
-namespace app\index\controller\login;
+namespace app\index\controller\member;
 
 use app\index\controller\Xcx;
 use think\Config;
