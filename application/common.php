@@ -10,3 +10,10 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+function getsessionid(){
+    if (PHP_SESSION_ACTIVE != session_status()) {
+        session_start();
+    }
+    return session_id();
+}
