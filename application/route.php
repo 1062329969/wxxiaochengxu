@@ -18,6 +18,9 @@ return [
         '/dologin'   => ['@index/login/Login/memberlogin'],
         '/mylove' => ['@index/member/Member/getuser']
     ],
+    '[index]'     => [
+        '/list'   => ['@index/index/Index/getlist'],
+    ],
     'adduser'=>'@index/login/Login/adduser',
     'getopenid'=>'@index/login/Login/getopenid',
 

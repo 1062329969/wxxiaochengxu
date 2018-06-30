@@ -21,8 +21,6 @@ class Article extends Admin
 
 	public function index()
     {
-        Session::flash('code',1);
-        Session::flash('msg','添加成功');
         $list = Db::name('article')->where(['a_state'=>1])->paginate(15);
         $this->assign('list',$list);
         return $this->fetch();
