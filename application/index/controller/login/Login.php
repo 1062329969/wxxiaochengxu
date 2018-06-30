@@ -22,7 +22,7 @@ class Login extends Xcx
         $password = input('post.password/s');
         $user = Db::name('user')->where(['u_name'=>$username,'u_passwd'=>$password])->find();
         if($user){
-            $this->success('登录成功');
+            $this->success('登录成功','',['sessionid'=>getsessionid()]);
         }else{
             $this->error('登录失败');
         }
