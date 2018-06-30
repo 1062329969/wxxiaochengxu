@@ -11,7 +11,7 @@ class Index extends Xcx
     }
 
     public function getlist(){
-        $list = Db::name('article')->where(['a_state'=>1])->paginate(4)->toArray();
+        $list = Db::name('article')->where(['a_state'=>1])->order('a_id desc')->paginate(4)->toArray();
         return json($list);
     }
 

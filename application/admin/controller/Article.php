@@ -21,7 +21,7 @@ class Article extends Admin
 
 	public function index()
     {
-        $list = Db::name('article')->where(['a_state'=>1])->paginate(15);
+        $list = Db::name('article')->where(['a_state'=>1])->order('a_id desc')->paginate(15);
         $this->assign('list',$list);
         return $this->fetch();
     }
