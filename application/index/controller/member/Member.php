@@ -23,8 +23,11 @@ class Member extends Xcx
     }
 
     public function myewm(){
-        $id = Session::get('uid');
-        $erw = Db::name('user')->field('u_ewm')->find($id);
+//        $id = Session::get('uid');
+        $openid = input('param.openid');
+        $user = Db::name('user')->where(['u_openid'=>$openid])->field('u_id')->find();
+        $id = $user['u_id'];
+        $erw = Db::name('user')->field('u_ewm')->find();
         if($erw){
             $erwpath = $erw['u_ewm'];
         }else{
