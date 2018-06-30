@@ -31,7 +31,7 @@ class Member extends Xcx
         if($erw['u_ewm']){
             $erwpath = $erw['u_ewm'];
         }else{
-            $a = file_get_contents('http://qr.liantu.com/api.php?text=http://ihair.yongxianghui.net/member/reg/rd_id/'.$id.'.html');
+            $a = file_get_contents('http://qr.liantu.com/api.php?text='.$openid);
             $filename = time().'.png';
             $path = ROOT_PATH . 'public' . DS . 'static/uploads/ewm/'.$filename;
             file_put_contents($path,$a);
