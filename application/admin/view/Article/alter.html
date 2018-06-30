@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title></title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="{$Think.HTML_STATIC}/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="{$Think.HTML_STATIC}/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="{$Think.HTML_STATIC}/css/animate.min.css" rel="stylesheet">
+    <link href="{$Think.HTML_STATIC}/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="{$Think.HTML_STATIC}/plugins/layui/css/layui.css" media="all">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加</h5>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">图片：</label>
+                            <div class="col-sm-8">
+                                <button type="button" class="layui-btn" id="test1">
+                                    <i class="layui-icon">&#xe67c;</i>上传图片
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-8" id="imgdiv">
+                                <?php
+                                foreach(json_decode($info['a_img']) as $k=>$v){
+                            ?>
+                                <img src="{$v}" onclick='rmimg(this)'>
+                                <input type='hidden' name='a_img[]' value='{$v}'>
+                                <?php
+                                }
+                            ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">内容</label>
+                            <div class="col-sm-8">
+                                <textarea name="a_content" class="form-control" rows="15" cols="10">{$info.a_content}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">点赞：</label>
+                            <div class="col-sm-8">
+                                <input type="number" name="a_praise" placeholder="点赞" value="{$info.a_praise}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">浏览：</label>
+                            <div class="col-sm-8">
+                                <input type="number" name="a_view" placeholder="浏览" value="{$info.a_view}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button class="btn btn-sm btn-primary" type="submit">修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.HTML_STATIC}/js/jquery.min.js?v=2.1.4"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="{$Think.HTML_STATIC}/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="{$Think.HTML_STATIC}/js/content.min.js?v=2.1.4"></script>
+<script src="{$Think.HTML_STATIC}/plugins/layui/layui.js"></script>
+<script>
+    $(function () {
+        $('form').submit(function () {
+            var img_len = $('#imgdiv').find('img').length;
+            var a_content = $(':input[name=a_content]').val()
+            var a_content_len = a_content .length
+            var a_praise = $(':input[name=a_praise]').val()
+            var a_praise_len = a_praise .length
+            var a_view = $(':input[name=a_view]').val()
+            var a_view_len = a_view .length
+            if( img_len && a_content_len && a_praise_len && a_view_len){
+                return true
+            }else{
+                return false
+            }
+        })
+    })
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test1',
+            url: "{:url('upload')}",
+            field:'image',
+            done: function(res){
+                //上传完毕回调
+                var urls = res.data.url
+                var _html = "<img src='"+urls+"'>" +
+                        "<input type='hidden' name='a_img[]' value='"+urls+"'>"
+                $('#imgdiv').append(_html)
+            },
+            error: function(){
+                //请求异常回调
+            }
+        });
+    });
+    function rmimg(_self) {
+        $(_self).next().remove()
+        $(_self).remove()
+    }
+</script>
+</body>
+</html>
