@@ -28,7 +28,7 @@ class Member extends Xcx
         $user = Db::name('user')->where(['u_openid'=>$openid])->field('u_id')->find();
         $id = $user['u_id'];
         $erw = Db::name('user')->field('u_ewm')->find();
-        if($erw){
+        if($erw['u_ewm']){
             $erwpath = $erw['u_ewm'];
         }else{
             $a = file_get_contents('http://qr.liantu.com/api.php?text=http://ihair.yongxianghui.net/member/reg/rd_id/'.$id.'.html');
