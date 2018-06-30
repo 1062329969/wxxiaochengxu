@@ -68,9 +68,9 @@ class Login extends Xcx
             $res = Db::name('user')->insert($datas);
         }
         if($res) {
-            return json(['code'=>1,'msg'=>'登录成功']);
+            return json(['code'=>1,'msg'=>'登录成功','sessionid'=>getsessionid()]);
         }else{
-            return json(['code'=>1,'msg'=>'登录失败']);
+            return json(['code'=>1,'msg'=>'登录失败','sessionid'=>getsessionid()]);
         }
     }
 }
