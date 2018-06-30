@@ -35,6 +35,6 @@ class Member extends Xcx
             Db::name('user')->where(['u_id'=>$id])->update(['u_ewm'=>'/static/uploads/ewm/'.$filename]);
             $erwpath = '/static/uploads/ewm/'.$filename;
         }
-        return $erwpath;
+        return json(['path'=>$erwpath,'id'=>$id]);
     }
 }
