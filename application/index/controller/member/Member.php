@@ -52,6 +52,10 @@ class Member extends Xcx
         $openid = input('param.openid');
         $u_id = Db::name('user')->where(['u_openid'=>$openid])->field('u_id')->find();
         $ouser = Db::name('user')->where(['u_openid'=>$result])->field('u_id')->find();
+        $info = Db::name('association')->where(['as_uid'=>$u_id['u_id'],'as_ouid'=>$ouser['u_id']])->find();
+        if($info){
+            return json(['code'=>1,'msg'=>'请等待回应']);
+        }
         $data = [];
         $data['as_uid'] = $u_id['u_id'];
         $data['as_ouid'] = $ouser['u_id'];
@@ -61,9 +65,9 @@ class Member extends Xcx
         $data['as_state'] = 0;
         $val = Db::name('association')->insert($data);
         if($val){
-            return json(['code'=>1,'msg'=>'关联成功，请等待对方回应']);
+            return json(['code'=>1,'msg'=>'请等待回应']);
         }else{
-            return json(['code'=>1,'msg'=>'关联失败，请重试']);
+            return json(['code'=>1,'msg'=>'请重试']);
         }
     }
 }
