@@ -17,7 +17,8 @@ return [
         '/login'   => ['@index/login/Login/index'],
         '/dologin'   => ['@index/login/Login/memberlogin'],
         '/mylove' => ['@index/member/Member/getuser'],
-        '/myewm' => ['@index/member/Member/myewm']
+        '/myewm' => ['@index/member/Member/myewm'],
+        '/myinfo' => ['@index/member/Member/myinfo']
     ],
     '[index]'     => [
         '/list'   => ['@index/index/Index/getlist'],

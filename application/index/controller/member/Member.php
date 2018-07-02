@@ -40,4 +40,10 @@ class Member extends Xcx
         }
         return json(['path'=>$erwpath,'id'=>$id]);
     }
+
+    public function myinfo(){
+        $openid = input('post.openid');
+        $user = Db::name('user')->where(['u_openid'=>$openid])->find();
+        return json($user);
+    }
 }
