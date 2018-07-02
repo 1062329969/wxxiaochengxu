@@ -54,7 +54,7 @@ class Member extends Xcx
         $ouser = Db::name('user')->where(['u_openid'=>$result])->field('u_id')->find();
         $data = [];
         $data['as_uid'] = $u_id['u_id'];
-        $data['as_ouid'] = $ouser['as_ouid'];
+        $data['as_ouid'] = $ouser['u_id'];
         $data['as_openid'] = $result;
         $data['as_addtime'] = time();
         $data['as_updatetime'] = time();
