@@ -61,9 +61,9 @@ class Member extends Xcx
         $data['as_state'] = 0;
         $val = Db::name('association')->insert($data);
         if($val){
-            $this->success('关联成功，请等待对方回应');
+            return json(['code'=>1,'msg'=>'关联成功，请等待对方回应']);
         }else{
-            $this->error('关联失败，请重试');
+            return json(['code'=>1,'msg'=>'关联失败，请重试']);
         }
     }
 }
